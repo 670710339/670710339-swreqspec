@@ -7,8 +7,7 @@ export const api = {
   async getSlots({ dateFrom, packageCode }) {
     const q = new URLSearchParams({ date_from: dateFrom, package_code: packageCode })
     const res = await fetch(`${BASE}/slots?${q}`)
-    const body = await res.json()
-    return Array.isArray(body) ? body : body.slots ?? []
+    return res.json()
   },
   async createBooking({ slotId }) {
     const res = await fetch(`${BASE}/bookings`, {
